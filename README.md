@@ -9,69 +9,60 @@ obvio, y explicar la solución en palabras que cualquiera entienda.
 
 ---
 
-## Trabajo real, en repos privados
+## Qué he hecho este año
 
-Lo que más he construido este año está en repos de clientes, así que no puedo
-enlazar el código. Lo cuento aquí con lo que sí es verificable: el producto en
-vivo, lo que hice yo, y con quién.
+En repos de clientes, así que no puedo enlazar el código. Enlazo el producto
+como referencia y cuento lo que hice yo.
 
-### 🍽️ Directo IA — flujo de onboarding · [producto en vivo](https://www.directoia.com/)
+### 🍽️ Onboarding de [Directo IA](https://www.directoia.com/) · venta por WhatsApp con IA para restaurantes
 
-Un restaurante vende por WhatsApp con un agente de IA y opera lo vendido desde
-un dashboard. El problema que me tocó: **el dueño del restaurante tiene que
-configurar su agente —menú, precios, horarios, personalidad, reglas de
-operación— sin que nadie lo acompañe.** Si se pierde en ese formulario, no hay
+**Construí el flujo de configuración inicial**, las pantallas donde el dueño de
+un restaurante da de alta su agente —menú, precios, horarios, personalidad,
+reglas de operación— sin nadie que lo acompañe. Si se pierde ahí, no hay
 producto.
 
-Soy responsable del flujo de onboarding: **41 commits, PRs #10 al #39** (julio
-2026). Lo que resolví ahí:
+- **Rehice cada paso para que quepa en la pantalla**, en cualquier tamaño, en
+  vez de obligar a hacer scroll dentro de un formulario largo: es el punto
+  donde la gente abandona.
+- **Llevé los errores al sitio donde ocurren.** Los dice el robot del producto,
+  en ese paso, y desaparecen en cuanto tocas el campo. Al intentar avanzar, se
+  resalta lo que falta.
+- **Hice recuperable el onboarding a medias:** quien vuelve retoma donde iba,
+  sin perder lo escrito ni recibir errores falsos.
+- **Lo dejé navegable con teclado** y sin romperse con textos largos ni en móvil.
 
-- **Que quepa en una pantalla, en cualquier pantalla.** Cada paso del flujo se
-  adapta al alto disponible en vez de obligar a hacer scroll dentro de un
-  formulario largo — el momento donde la gente abandona.
-- **Validación que se explica sola.** Los errores los dice el robot del producto,
-  en el paso donde ocurren, y se apagan en cuanto el usuario toca el campo. Las
-  secciones incompletas se resaltan al intentar avanzar.
-- **Recuperar a quien vuelve a medias.** Retomar el onboarding desde un estado
-  incompleto valida bien y no pierde lo ya escrito.
-- **Accesible con teclado** y sin romperse con textos largos ni en móvil.
+Next.js 16 · React 19 · TypeScript · Tailwind 4 · Supabase.
 
-**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind 4 ·
-Supabase (Postgres, Auth, Realtime) · n8n · WhatsApp vía GoHighLevel · Vercel.
+### ♟️ Internacionalización y acceso de [ChessLab](https://chesspwa.netlify.app) · cursos de ajedrez sin conexión
 
-### ♟️ ChessLab — PWA de cursos de ajedrez · [app en vivo](https://chesspwa.netlify.app)
+**Hice que la aplicación hablara otro idioma, incluido el contenido de los
+cursos**, no solo los botones.
 
-Una aplicación instalable que convierte un curso de ajedrez en lecciones y
-ejercicios que **funcionan sin conexión**. Mi parte, en **37 commits**
-(julio–agosto 2026): la **internacionalización completa** —incluida la
-traducción local del contenido del curso, preservando las imágenes de cada
-lección—, la **autenticación opcional con Supabase** (PR #29) y la navegación
-entre ejercicios, que dejaba al usuario en un callejón sin salida al llegar
-al último.
+- **Traduje las lecciones en local** y resolví que las imágenes se perdieran al
+  traducir el markdown: sin ellas, una lección de ajedrez no se entiende.
+- **Añadí acceso con Supabase, opcional**, para que la app siga sirviendo a
+  quien no quiere crear cuenta.
+- **Arreglé un callejón sin salida:** al resolver el último ejercicio no había
+  cómo volver, y el usuario quedaba atrapado.
 
-**Stack:** PWA offline · Supabase · Netlify.
+PWA sin conexión · Supabase · Netlify.
+*Requiere cuenta para entrar: el enlace es referencia del producto, no una demo abierta.*
 
-> Requiere cuenta para entrar: el enlace es la referencia del producto, no una
-> demo abierta.
+### 💸 Mantengo en producción una automatización bancaria
 
-### 💸 Bancolombia → Lunch Money — automatización en producción
+**La opero y la arreglo; no la escribí, y prefiero decirlo.** Un Google Apps
+Script lee las alertas de Bancolombia que llegan al correo y crea la
+transacción ya categorizada en **[Lunch Money](https://lunchmoney.app)**, cada
+5 minutos, sin que nadie la toque. No tiene web propia: corre dentro de la
+cuenta de Google del cliente.
 
-Bancolombia no está soportado por Plaid ni Belvo para personas naturales, así
-que las transacciones se registran a mano o no se registran. La solución: un
-**Google Apps Script que corre dentro de la cuenta de Google del cliente**, lee
-las alertas del banco que llegan al correo, las parsea y crea la transacción ya
-categorizada en **[Lunch Money](https://lunchmoney.app)**. Cada 5 minutos, sin
-que nadie lo toque. **No tiene dirección web propia:** es un script que corre
-dentro de la cuenta de Google del cliente, sin interfaz.
+**Mi trabajo es que siga funcionando.** Cuando el banco cambia el formato de un
+correo, el parser deja de reconocerlo y las transacciones se caen **en
+silencio**: nadie recibe un error, simplemente dejan de aparecer. Encontrar ese
+caso, reproducirlo y corregir la regla es lo que hago. Me enseñó que en
+automatización lo difícil no es escribirla, es que siga viva el martes.
 
-**Soy honesto con mi papel aquí: el sistema lo escribió su autor; yo lo opero y
-lo mantengo** para el cliente que lo usa a diario. Cuando el banco cambia el
-formato de un correo, el parser deja de reconocerlo y las transacciones se caen
-en silencio — encontrar ese caso, reproducirlo y arreglar la regla es mi trabajo.
-Es el proyecto que me enseñó que en automatización lo difícil no es escribirla:
-es que siga funcionando el martes.
-
-**Stack:** Google Apps Script · GmailApp · API de Lunch Money · clasp.
+Google Apps Script · GmailApp · API de Lunch Money.
 
 ---
 
@@ -155,27 +146,28 @@ si no entiendo una línea, no la merge.
 I'm a **junior web developer** based in Medellín, Colombia. After years teaching
 mathematics, I now build the tools I used to run by hand.
 
-**Client work lives in private repos, so here is what's verifiable:**
+**Client work lives in private repos, so I link the product and describe what
+I did:**
 
-- **[Directo IA](https://www.directoia.com/)** — a WhatsApp AI sales product
-  for restaurants. I own the **onboarding flow**: 41 commits, PRs #10–#39. The
-  restaurant owner has to configure their whole agent — menu, prices, hours,
-  personality — with nobody helping them; if they get lost in that form, there
-  is no product. I made every step fit the viewport, moved validation to where
-  the error happens, made an interrupted onboarding resumable, and made it
-  keyboard-accessible. *Next.js 16 · React 19 · TypeScript · Tailwind 4 ·
-  Supabase · n8n · Vercel.*
-- **[ChessLab](https://chesspwa.netlify.app)** — an installable PWA that turns
-  a chess course into offline lessons and puzzles. 37 commits: full
-  internationalization (including local translation of course content),
-  optional Supabase auth, and puzzle navigation. *Sign-in required — the link
+- **I built the onboarding flow of [Directo IA](https://www.directoia.com/)**, a
+  WhatsApp AI sales product for restaurants — the screens where an owner sets up
+  their whole agent (menu, prices, hours, personality) with nobody helping them.
+  I rebuilt every step to fit the viewport instead of scrolling inside a long
+  form, moved validation to where the error happens, made an interrupted
+  onboarding resumable, and made it keyboard-accessible.
+  *Next.js 16 · React 19 · TypeScript · Tailwind 4 · Supabase.*
+- **I made [ChessLab](https://chesspwa.netlify.app) speak another language** —
+  including the course content, not just the buttons. I translated lessons
+  locally and fixed the images being lost in the translated markdown (a chess
+  lesson without them is unreadable), added optional Supabase sign-in, and fixed
+  a dead end where the last puzzle had no way back. *Sign-in required — the link
   is a product reference, not an open demo.*
-- **Bancolombia → Lunch Money** — a Google Apps Script that reads bank alert
-  emails and posts categorized transactions automatically, every 5 minutes.
-  **To be precise about my role: I didn't write it, I operate and maintain it**
-  for the client who depends on it daily. When the bank changes an email
-  format, the parser silently stops matching — finding and fixing that is my
-  job. Automation is easy to write and hard to keep alive.
+- **I keep a bank automation alive in production.** A Google Apps Script reads
+  Bancolombia alert emails and posts categorized transactions to Lunch Money
+  every 5 minutes. **I didn't write it — I operate and fix it**, and I'd rather
+  say so. When the bank changes an email format, the parser silently stops
+  matching: no error, transactions just stop appearing. Finding and fixing that
+  is the job.
 
 My own favorite project is
 **[honest-english](https://gibson1987r.github.io/honest-english/)**: most
