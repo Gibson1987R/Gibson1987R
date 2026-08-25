@@ -39,13 +39,30 @@ Soy responsable del flujo de onboarding: **41 commits, PRs #10 al #39** (julio
 **Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind 4 ·
 Supabase (Postgres, Auth, Realtime) · n8n · WhatsApp vía GoHighLevel · Vercel.
 
+### ♟️ ChessLab — PWA de cursos de ajedrez · [app en vivo](https://chesspwa.netlify.app)
+
+Una aplicación instalable que convierte un curso de ajedrez en lecciones y
+ejercicios que **funcionan sin conexión**. Mi parte, en **37 commits**
+(julio–agosto 2026): la **internacionalización completa** —incluida la
+traducción local del contenido del curso, preservando las imágenes de cada
+lección—, la **autenticación opcional con Supabase** (PR #29) y la navegación
+entre ejercicios, que dejaba al usuario en un callejón sin salida al llegar
+al último.
+
+**Stack:** PWA offline · Supabase · Netlify.
+
+> Requiere cuenta para entrar: el enlace es la referencia del producto, no una
+> demo abierta.
+
 ### 💸 Bancolombia → Lunch Money — automatización en producción
 
 Bancolombia no está soportado por Plaid ni Belvo para personas naturales, así
 que las transacciones se registran a mano o no se registran. La solución: un
 **Google Apps Script que corre dentro de la cuenta de Google del cliente**, lee
 las alertas del banco que llegan al correo, las parsea y crea la transacción ya
-categorizada en Lunch Money. Cada 5 minutos, sin que nadie lo toque.
+categorizada en **[Lunch Money](https://lunchmoney.app)**. Cada 5 minutos, sin
+que nadie lo toque. **No tiene dirección web propia:** es un script que corre
+dentro de la cuenta de Google del cliente, sin interfaz.
 
 **Soy honesto con mi papel aquí: el sistema lo escribió su autor; yo lo opero y
 lo mantengo** para el cliente que lo usa a diario. Cuando el banco cambia el
@@ -148,6 +165,11 @@ mathematics, I now build the tools I used to run by hand.
   the error happens, made an interrupted onboarding resumable, and made it
   keyboard-accessible. *Next.js 16 · React 19 · TypeScript · Tailwind 4 ·
   Supabase · n8n · Vercel.*
+- **[ChessLab](https://chesspwa.netlify.app)** — an installable PWA that turns
+  a chess course into offline lessons and puzzles. 37 commits: full
+  internationalization (including local translation of course content),
+  optional Supabase auth, and puzzle navigation. *Sign-in required — the link
+  is a product reference, not an open demo.*
 - **Bancolombia → Lunch Money** — a Google Apps Script that reads bank alert
   emails and posts categorized transactions automatically, every 5 minutes.
   **To be precise about my role: I didn't write it, I operate and maintain it**
